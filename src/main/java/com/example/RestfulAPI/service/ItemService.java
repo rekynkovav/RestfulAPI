@@ -20,4 +20,8 @@ public class ItemService {
     public List<Item> getAllItems(){
         return itemIRepository.findAll();
     }
+
+    public void save(Item item){
+        itemIRepository.save(item);
+    }
 }
