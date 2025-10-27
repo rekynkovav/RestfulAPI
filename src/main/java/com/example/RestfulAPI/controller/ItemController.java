@@ -5,6 +5,7 @@ import com.example.RestfulAPI.facade.ItemFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -17,13 +18,12 @@ public class ItemController {
 
     ItemFacade itemFacade;
 
-
-
     @GetMapping("/item")
     public String showItem(){
         return "/item";
     }
 
+    @PostMapping()
     public String saveItem(@RequestParam(value = "title") String title){
         ItemDTO itemDTO = new ItemDTO(title);
         itemFacade.setDTO(itemDTO);

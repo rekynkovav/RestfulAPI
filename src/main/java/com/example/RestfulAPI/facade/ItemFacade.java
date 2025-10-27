@@ -23,9 +23,9 @@ public class ItemFacade {
         itemService.save(item);
     }
 
-    public ItemDTO getDTO(Item item){
+    public ItemDTO getDTO(Long id){
         ItemDTO itemDTO = new ItemDTO();
-        itemDTO.setTitle(item.getTitle());
+        itemDTO.setTitle(itemService.getItemById(id).getTitle());
         return itemDTO;
     }
 

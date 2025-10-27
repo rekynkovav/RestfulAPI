@@ -24,4 +24,8 @@ public class ItemService {
     public void save(Item item){
         itemIRepository.save(item);
     }
+
+    public Item getItemById (Long id){
+        return itemIRepository.getById(id);
+    }
 }
