@@ -17,17 +17,26 @@ public class ItemFacade {
         this.itemService = itemService;
     }
 
-    public void setDTO(ItemDTO itemDTO){
+    public void saveDTO(ItemDTO itemDTO){
+        saveItem(itemDTO);
+    }
+
+    private void saveItem(ItemDTO itemDTO) {
         Item item = new Item();
         item.setTitle(itemDTO.getTitle());
         itemService.save(item);
     }
 
-    public ItemDTO getDTO(Long id){
-        ItemDTO itemDTO = new ItemDTO();
-        itemDTO.setTitle(itemService.getItemById(id).getTitle());
-        return itemDTO;
-    }
+//    public ItemDTO getDTO(Long id){
+//        return getItemDTO(id);
+
+//    }
+
+//    private ItemDTO getItemDTO(Long id) {
+//        ItemDTO itemDTO = new ItemDTO();
+//        itemDTO.setTitle(itemService.getItemById(id).getTitle());
+//        return itemDTO;
+//    }
 
 
     // тут беру запрос от контроллера и DTO, преобразую в
