@@ -1,8 +1,5 @@
 package com.example.RestfulAPI.dto;
 
-import org.springframework.stereotype.Service;
-
-
 public class ItemDTO {
 
     private String title;

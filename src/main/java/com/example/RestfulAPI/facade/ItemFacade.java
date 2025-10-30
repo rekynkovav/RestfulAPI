@@ -24,21 +24,4 @@ public class ItemFacade {
     private void saveItem(ItemDTO itemDTO) {
         itemService.save(new Item(itemDTO.getTitle()));
     }
-
-//    public ItemDTO getDTO(Long id){
-//        return getItemDTO(id);
-
-//    }
-
-//    private ItemDTO getItemDTO(Long id) {
-//        ItemDTO itemDTO = new ItemDTO();
-//        itemDTO.setTitle(itemService.getItemById(id).getTitle());
-//        return itemDTO;
-//    }
-
-
-    // тут беру запрос от контроллера и DTO, преобразую в
-// ентити кладу в БД, так же беру из бд преобразую в ентити и отдаю контроллеру
-
-
 }
