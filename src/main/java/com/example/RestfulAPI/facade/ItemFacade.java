@@ -22,9 +22,7 @@ public class ItemFacade {
     }
 
     private void saveItem(ItemDTO itemDTO) {
-        Item item = new Item();
-        item.setTitle(itemDTO.getTitle());
-        itemService.save(item);
+        itemService.save(new Item(itemDTO.getTitle()));
     }
 
 //    public ItemDTO getDTO(Long id){

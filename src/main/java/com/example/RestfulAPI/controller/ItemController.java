@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -19,17 +20,17 @@ public class ItemController {
 
     ItemFacade itemFacade;
 
-    @GetMapping("/simple-form")
-    public String showItem(){
-/// /// 1:20
-        return "simple-form";
+    @GetMapping("/addItem")
+    public String AddItem(Model model){
+        ItemDTO itemDTO = new ItemDTO("null");
+        model.addAttribute("itemDTO", itemDTO);
+        return "item-form";
     }
 
     @PostMapping("/form")
-    public String saveItem(@RequestParam(value = "title") String title){
-        System.out.println(title);
-        ItemDTO itemDTO = new ItemDTO(title);
+    public String saveItem(@ModelAttribute(value = "title") ItemDTO itemDTO){
         itemFacade.saveDTO(itemDTO);
-        return "redirect:/simple-form";
+
+        return "redirect:/addItem";
     }
 }

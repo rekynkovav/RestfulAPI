@@ -1,0 +1,1 @@
+INSERT INTO items (title) VALUES ('books'), ('table'), ('phone');

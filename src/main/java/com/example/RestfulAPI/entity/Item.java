@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Item {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
@@ -15,6 +15,9 @@ public class Item {
     private String title;
 
     public Item() {
+    }
+    public Item(String title) {
+        this.title = title;
     }
 
     public Item(long id, String title) {
