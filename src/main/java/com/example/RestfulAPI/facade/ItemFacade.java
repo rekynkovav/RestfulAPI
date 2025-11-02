@@ -7,6 +7,8 @@ import com.example.RestfulAPI.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ItemFacade {
 
@@ -18,10 +20,18 @@ public class ItemFacade {
     }
 
     public void saveDTO(ItemDTO itemDTO){
-        saveItem(itemDTO);
+        mapperEntity(itemDTO);
     }
 
-    private void saveItem(ItemDTO itemDTO) {
+    private void mapperEntity(ItemDTO itemDTO) {
         itemService.save(new Item(itemDTO.getTitle()));
+    }
+
+    public List<Item> getAllItem(){
+       return itemService.getAllItem();
+    }
+
+    public void deleteDTO(long id){
+        itemService.delete(id);
     }
 }

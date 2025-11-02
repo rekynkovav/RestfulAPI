@@ -17,7 +17,7 @@ public class ItemService {
 
     private ItemRepository itemIRepository;
 
-    public List<Item> getAllItems(){
+    public List<Item> getAllItem(){
         return itemIRepository.findAll();
     }
 
@@ -25,7 +25,7 @@ public class ItemService {
         itemIRepository.save(item);
     }
 
-    public Item getItemById (Long id){
-        return itemIRepository.getById(id);
+    public void delete(long id) {
+        itemIRepository.deleteById(id);
     }
 }

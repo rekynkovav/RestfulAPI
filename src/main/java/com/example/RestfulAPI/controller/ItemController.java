@@ -12,23 +12,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller("/RestfulAPI")
 public class ItemController {
 
+    ItemFacade itemFacade;
+
     @Autowired
     public void setItemFacade(ItemFacade itemFacade) {
         this.itemFacade = itemFacade;
     }
 
-    ItemFacade itemFacade;
-
     @GetMapping("/addItem")
     public String AddItem(Model model){
-        ItemDTO itemDTO = new ItemDTO("null");
+        model.addAttribute("items", itemFacade.getAllItem());
+        ItemDTO itemDTO = new ItemDTO();
         model.addAttribute("itemDTO", itemDTO);
         return "item-form";
     }
 
-    @PostMapping("/form")
+    @PostMapping("/save")
     public String saveItem(@ModelAttribute(value = "title") ItemDTO itemDTO){
         itemFacade.saveDTO(itemDTO);
+        return "redirect:/addItem";
+    }
+
+    @PostMapping("/delete")
+    public String deleteItem(@ModelAttribute(value = "id") ItemDTO itemDTO){
+        System.out.println(itemDTO.getId());
+        itemFacade.deleteDTO(itemDTO.getId());
         return "redirect:/addItem";
     }
 }

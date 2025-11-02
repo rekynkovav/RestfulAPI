@@ -8,12 +8,33 @@
 <html>
 <body>
 
-<form th:action="@{/form}" th:object="${itemDTO}" method="post">
+<form th:action="@{/save}" th:object="${itemDTO}" method="post">
     <span>AddItem</span>
     <input th:field="*{title}"/>
-
     <button type="submit">Save</button>
 </form>
+<form th:action="@{/delete}" th:object="${itemDTO}" method="post">
+    <span>delete ID</span>
+    <input th:field="*{id}"/>
+    <button type="submit">Delete</button>
+</form>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Item</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${items}">
+            <td th:text="${item.id}"/>
+            <td th:text="${item.title}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 </body>
 
 </html>
